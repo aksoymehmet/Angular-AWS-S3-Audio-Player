@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>picto_repeat</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="picto_repeat" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g transform="translate(5.000000, 8.000000)" id="Shape" stroke="#240F39" stroke-width="0.792">
+            <polygon points="16.8681633 6.09480342 19.844898 3.14529915 16.8681633 0.196581197 19.844898 3.14529915"></polygon>
+            <polygon points="19.844898 3.14529915 0.00158759184 3.14529915 0 7.07731624 0.00158759184 3.14529915"></polygon>
+            <polygon points="2.97713159 8.05982906 0 11.008547 2.97713159 13.957265 0 11.008547"></polygon>
+            <polygon points="0 11.008547 19.8433104 11.0093333 19.844898 7.07731624 19.8433104 11.0093333"></polygon>
+        </g>
+    </g>
+</svg>

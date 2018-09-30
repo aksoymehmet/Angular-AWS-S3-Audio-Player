@@ -1,0 +1,37 @@
+<h2>Tracks link</h2>
+
+<mat-list *ngFor="let list of myPlaylist">
+  <mat-list-item> {{list.url}}</mat-list-item>
+</mat-list>
+
+<h2>Audio Player</h2>
+
+<div (click)="myPlayFunction($event)" [inlineSVG]="bPlayPause" class="btn_pause"></div>
+<div id="player">
+    <div><mat-slider #matSlider (change)="onInputChange($event)" min="0" [max]="duration" step="1" [value]="currentTime"></mat-slider></div>
+    <div id="pDuration">{{ songDuration }}</div>
+    <div id="pPlayer">
+       <div id="pLeft">
+            <div (click)="myPlayFunction($event)" id="pCircle" [inlineSVG]="bCircle"></div>
+            <img [src]="cover"/>
+            <div class="effectImg"></div>
+            <div id="pInfo">
+                <div>Titre</div>
+                <div>{{ title }}</div>
+                <div>{{ songTime }}</div>
+            </div>
+        </div> 
+        <div id="pButton">
+            <div (click)="myRepeatFunction($event)" [inlineSVG]="bRepeat" class="btn_repeat"></div> 
+            <div (click)="myBackFunction($event)" [inlineSVG]="bBack" class="btn_back"></div>
+            <div (click)="myNextFunction($event)" [inlineSVG]="bNext" class="btn_next"></div>
+            <div (click)="myRandomFunction($event)" [inlineSVG]="bRandom" class="btn_random"></div>
+        </div>
+        <div id="pVolume">
+            <div [inlineSVG]="vMute" class="picto_mute"></div>
+            <div id="matVolume"><mat-slider class="matVolume" (change)="onVolumeChange($event)" min="0" max="1" step="0.1" value="0.5"></mat-slider></div>
+            <div [inlineSVG]="vSon" class="picto_son"></div>
+            <div [inlineSVG]="vMenu" class="picto_menu"></div>
+        </div> 
+    </div>
+</div> 

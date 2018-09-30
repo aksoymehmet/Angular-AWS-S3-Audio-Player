@@ -1,0 +1,7 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h2>Title</h2>
+  <mat-list *ngFor="let list of playlist">
+    <mat-list-item> {{list.title}}</mat-list-item>
+  </mat-list>
+<app-player [myPlaylist]="playlist"></app-player>
+

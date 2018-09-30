@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg style="vertical-align: -12px;" width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>btn_play</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="btn_play" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(2.000000, 2.000000)">
+            <circle id="Oval-4" stroke-opacity="0.0756906703" stroke="#240F39" stroke-width="2" cx="25.5" cy="25.5" r="25.5"></circle>
+            <g id="II" transform="translate(24.000000, 20.000000)" fill="#FE5266" stroke="#FE5266" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.97000006">
+                <polygon id="Line-4" points="0.921428571 0 7 5.5 0.921428571 11"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

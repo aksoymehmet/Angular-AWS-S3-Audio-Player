@@ -1,0 +1,84 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@font-face {
+    font-family: 'circularblack';
+    src: url('assets/fonts/circular/circular-black.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'circularblackitalic';
+    src: url('assets/fonts/circular/circular-black-italic.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'circularbold';
+    src: url('assets/fonts/circular/circular-bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'circularbolditalic';
+    src: url('assets/fonts/circular/circular-bold-italic.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'circularmedium';
+    src: url('assets/fonts/circular/circular-medium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'circularmediumitalic';
+    src: url('assets/fonts/circular/circular-medium-italic.otf') format('opentype');
+}
+
+body {
+    background-color: #ffff;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+}
+svg {
+    pointer-events: none;
+}
+.mat-accent .mat-slider-thumb-label, .mat-accent .mat-slider-track-fill {
+    background-color: #fe5266;
+}
+
+.mat-accent .mat-slider-thumb {
+    background-color: #ffff;
+    border: solid 1px #fe5266;
+}
+
+.matVolume {
+    position: relative;
+    top: -8px;
+}
+
+.matVolume .mat-slider-thumb {
+    background-color: #fe5266;
+    border: solid 1px #fe5266;
+}
+
+
+.mat-slider-track-background {
+    background-color: #e9e9e9;
+}
+
+.mat-button span.mat-button-wrapper {
+    font-size: 12px;
+    color: #fe5266;
+}
+
+.mat-button span.mat-button-wrapper img {
+    width: 12px;
+    padding-left: 5px;
+}
+
+.mat-button {
+    line-height: 15px !important;
+}
+
+
+
+
+
