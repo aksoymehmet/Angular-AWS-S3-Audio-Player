@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef, OnChanges, SimpleChange, OnInit } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, OnChanges, SimpleChange, OnInit, element } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { CookieService } from 'angular2-cookie/core';
 import * as $ from 'jquery';
@@ -34,14 +34,14 @@ export class PlayerComponent implements OnInit {
   private vMenu: string = "assets/img/player/picto_menu_player.svg";
   private title: string;
   private cover: string = "assets/img/player/angular.png";
+  private attr: any;
   
 
 @Input() myPlaylist: any;
 @ViewChild("matSlider", {read: ElementRef}) matSlider: ElementRef;
 
-  getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+  
+
 
   ngOnInit(){
     
@@ -93,20 +93,20 @@ export class PlayerComponent implements OnInit {
     if (currentTimeI) {
       this.currentTime = parseInt(currentTimeI);
       this.audio.currentTime = this.currentTime;
-      this.myPlaylist[this.numberPlaylist.toString()].currentTime = this.currentTime;
+      this.setCurrentTime(this.currentTime, this.numberPlaylist, this.myPlaylist);
       
     } else {
       this.currentTime = this.currentTime;
       this.audio.currentTime = this.currentTime;
-      this.myPlaylist[this.numberPlaylist.toString()].currentTime = this.currentTime;
+      this.setCurrentTime(this.currentTime, this.numberPlaylist, this.myPlaylist);
     }
 
     if (durationI) {
       this.duration = parseInt(durationI);
-      this.myPlaylist[this.numberPlaylist.toString()].duration = this.duration;
+      this.setDuration(this.duration, this.numberPlaylist, this.myPlaylist);
     } else {
       this.duration = this.duration;
-      this.myPlaylist[this.numberPlaylist.toString()].duration = this.duration;
+      this.setDuration(this.duration, this.numberPlaylist, this.myPlaylist);
     }
 
     if (!this.audio.paused)
@@ -118,7 +118,8 @@ export class PlayerComponent implements OnInit {
     $("#player").css("display","none");
   }
 
-    this.audio.src = this.myPlaylist[this.numberPlaylist.toString()].url;
+    this.setAudioSrc(this.numberPlaylist, this.myPlaylist, this.audio);
+
     this.audio.onended = () => { 
 
       this._cookieService.put("numberPlaylist", String(parseInt(this._cookieService.get("numberPlaylist")) + 1));
@@ -138,7 +139,7 @@ export class PlayerComponent implements OnInit {
             this.bPlayPause = "assets/img/player/btn_pause.svg";
             this._cookieService.put("numberPlaylist", String(this.getRandomInt(0,this.myPlaylist.length-1)));
             this.numberPlaylist = parseInt(this._cookieService.get("numberPlaylist"));
-            this.audio.src = this.myPlaylist[this.numberPlaylist.toString()].url;
+            this.setAudioSrc(this.numberPlaylist, this.myPlaylist, this.audio);
             this.currentTime = 0;
             this.duration = 0;
             this.audio.load();
@@ -150,7 +151,7 @@ export class PlayerComponent implements OnInit {
           if(this.numberPlaylist <= this.myPlaylist.length - 1)
           {
             this.bPlayPause = "assets/img/player/btn_pause.svg";
-            this.audio.src = this.myPlaylist[this.numberPlaylist.toString()].url;
+            this.setAudioSrc(this.numberPlaylist, this.myPlaylist, this.audio);
             this.currentTime = 0;
             this.duration = 0;
             this.audio.load();
@@ -161,7 +162,7 @@ export class PlayerComponent implements OnInit {
             this.bPlayPause = "assets/img/player/btn_pause.svg";
             this._cookieService.put("numberPlaylist", "0");
             this.numberPlaylist = parseInt(this._cookieService.get("numberPlaylist"));
-            this.audio.src = this.myPlaylist[this.numberPlaylist.toString()].url;
+            this.setAudioSrc(this.numberPlaylist, this.myPlaylist, this.audio);
             this.currentTime = 0;
             this.duration = 0;
             this.audio.load();
@@ -183,7 +184,7 @@ export class PlayerComponent implements OnInit {
             this.bPlayPause = "assets/img/player/btn_pause.svg";
             this._cookieService.put("numberPlaylist", String(this.getRandomInt(0,this.myPlaylist.length-1)));
             this.numberPlaylist = parseInt(this._cookieService.get("numberPlaylist"));
-            this.audio.src = this.myPlaylist[this.numberPlaylist.toString()].url;
+            this.setAudioSrc(this.numberPlaylist, this.myPlaylist, this.audio);
             this.currentTime = 0;
             this.duration = 0;
             this.audio.load();
@@ -193,7 +194,7 @@ export class PlayerComponent implements OnInit {
           {
             this._cookieService.put("numberPlaylist", "0");
             this.numberPlaylist = parseInt(this._cookieService.get("numberPlaylist"));
-            this.audio.src = this.myPlaylist[this.numberPlaylist.toString()].url;
+            this.setAudioSrc(this.numberPlaylist, this.myPlaylist, this.audio);
             this.currentTime = 0;
             this.duration = 0;
             this.audio.load();
@@ -210,7 +211,7 @@ export class PlayerComponent implements OnInit {
           if(this.numberPlaylist <= this.myPlaylist.length - 1)
           {
             this.bPlayPause = "assets/img/player/btn_pause.svg";
-            this.audio.src = this.myPlaylist[this.numberPlaylist.toString()].url;
+            this.setAudioSrc(this.numberPlaylist, this.myPlaylist, this.audio);
             this.currentTime = 0;
             this.duration = 0;
             this.audio.load();
@@ -221,7 +222,7 @@ export class PlayerComponent implements OnInit {
             
             this._cookieService.put("numberPlaylist", "0");
             this.numberPlaylist = parseInt(this._cookieService.get("numberPlaylist"));
-            this.audio.src = this.myPlaylist[this.numberPlaylist.toString()].url;
+            this.setAudioSrc(this.numberPlaylist, this.myPlaylist, this.audio);
             this.currentTime = 0;
             this.duration = 0;
             this.audio.load();
@@ -271,7 +272,7 @@ export class PlayerComponent implements OnInit {
         
         this.songDuration = dur;
         this.songTime = dur2;
-        this.title = this.myPlaylist[this.numberPlaylist.toString()].title;
+        this.setTitle(this.numberPlaylist, this.myPlaylist, this.title);
       }
     });
     
@@ -296,7 +297,7 @@ export class PlayerComponent implements OnInit {
         this.numberPlaylist = parseInt(this._cookieService.get("numberPlaylist"));
       }
 
-      this.audio.src = this.myPlaylist[this.numberPlaylist.toString()].url;
+      this.setAudioSrc(this.numberPlaylist, this.myPlaylist, this.audio);
       this.currentTime = 0;
       this.duration = 0;
       this.audio.load();
@@ -323,7 +324,7 @@ export class PlayerComponent implements OnInit {
         this.numberPlaylist = parseInt(this._cookieService.get("numberPlaylist"));
       }
 
-      this.audio.src = this.myPlaylist[this.numberPlaylist.toString()].url;
+      this.setAudioSrc(this.numberPlaylist, this.myPlaylist, this.audio);
       this.currentTime = 0;
       this.duration = 0;
       this.audio.load();
@@ -402,6 +403,50 @@ export class PlayerComponent implements OnInit {
     console.log(event);
     this.audio.volume = event.value;
 
+  }
+
+  getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  setCurrentTime(time, numPlaylist, playlist){
+    var i = 0;
+    playlist.forEach(element => {
+      if(i == numPlaylist)
+      element.currentTime = time;
+      
+      i++;
+    });
+  }
+
+  setDuration(time, numPlaylist, playlist){
+    var i = 0;
+    playlist.forEach(element => {
+      if(i == numPlaylist)
+      element.duration = time;
+      
+      i++;
+    });
+  }
+
+  setAudioSrc(numPlaylist, playlist, audio){
+    var i = 0;
+    playlist.forEach(element => {
+      if(i == numPlaylist)
+      audio.src = element.url;
+
+      i++;
+    });
+  }
+
+  setTitle(numPlaylist, playlist, title){
+    var i = 0;
+    playlist.forEach(element => {
+      if(i == numPlaylist)
+      title = element.title;
+
+      i++;
+    });
   }
 
 }
